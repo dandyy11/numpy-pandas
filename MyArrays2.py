@@ -140,7 +140,85 @@ Calculate the average of all the grades, the averages of the grades for each tes
 and the averages of the grades for each student.
 '''
 
+grades= np.random.randint(60, 101, 12).reshape(3, 4)
+print(grades)
 
+print(grades.mean())
+
+print(grades.mean(axis=0))
+
+print(grades.mean(axis=1))
+
+numbers = np.arange(1,6)
+print(numbers)
+
+#shallow copy
+numbers_view = numbers.view()
+print(numbers_view)
+
+numbers[1] *= 10
+print(numbers)
+print(numbers_view)
+
+numbers_view[1] /= 10
+print(numbers)
+print(numbers_view)
+
+numbers_slice_view = numbers[0:3]
+print(numbers_slice_view)
+
+numbers[1] *= 20
+print(numbers_slice_view)
+
+#deep copy
+numbers_copy = numbers.copy()
+print(numbers_copy)
+
+numbers[1] *=10
+print(numbers)
+print(numbers_copy)
+
+
+grades = np.array([[87, 96, 70], [100, 87, 90]])
+print(grades)
+
+grades_reshaped = grades.reshape(1,6)
+print(grades_reshaped)
+
+grades_reshaped[0,1] = 100
+print(grades)
+print(grades_reshaped)
+
+
+#grades.resize(1,6)
+#print(grades)
+
+#flattened creates deep copy
+flattened = grades.flatten()
+print(flattened)
+
+#ravel creates a shallow copy
+raveled = grades.ravel()
+print(raveled)
+
+
+#transpose
+print(grades.T)
+
+
+grades2 = np.array([[94, 77, 90], [100, 81, 82]])
+
+#HSTACK - adding more columns to each row
+print(grades)
+
+
+h_grades = np.hstack((grades,grades2))
+print(h_grades)
+print(grades)
+
+#VSTACK - adding more rows
+v_grades = np.vstack((grades, grades2))
+print(v_grades)
 
 
 

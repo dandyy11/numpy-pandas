@@ -9,6 +9,9 @@ grades = pd.Series([87,100,94])
 
 
 
+
+
+
 pd.Series(98.6, range(3))
 
 #0    98.6
@@ -42,6 +45,7 @@ grades.describe()
 # You can specify custom indices with the index keyword argument:
 
 grades = pd.Series([87, 100, 94], index=['Wally', 'Eva', 'Sam'])
+
 
 
 # If you initialize a Series with a dictionary, its keys become the Series’ indices, and its values become
@@ -100,11 +104,63 @@ hardware.str.upper()
 
 
 
+#convert a series object to a python list
+hardware_list = hardware.tolist()
+
+print(hardware_list)
 
 
+#2 compare 2 series
+ds1 = pd.Series([2,4,6,8,10])
+ds2 = pd.Series([1,3,5,7,10])
+                
+print(ds1==ds2)
 
+print(ds1>ds2)
 
+print(ds1<ds2)
 
+#convert a series of lists to one series
+
+list_of_series = pd.Series([
+    ['Red', 'Green', 'White'],
+    ['Red', 'Black'],
+    ['Yellow']
+])
+
+print(list_of_series)
+
+one_series = list_of_series.apply(pd.Series).stack().reset_index(drop=True)
+
+print(one_series)
+
+#Sort a series
+s = pd.Series(['100','200','python','300.12','400'])
+sorted_series = s.sort_values()
+print(sorted_series)
+
+#add to a series
+added = s._append(pd.Series(['500','php']))
+
+print(added)
+
+#change the original
+s = s._append(pd.Series(['500','php']))
+print(s)
+
+#to reset the indexes
+s = s.reset_index(drop=True)
+print(s)
+
+#write code to calculate the frequency counts of each unique value of a given series
+
+import random
+
+list1 = [random.randrange(1,10) for i in range(0,101)]
+s = pd.Series(list1)
+print(s)
+result = s.value_counts()
+print(result)
 
 
 

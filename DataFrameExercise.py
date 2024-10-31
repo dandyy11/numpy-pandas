@@ -12,7 +12,7 @@ labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 
 #given the data above, create a datafram using the labels as row indexes and perform the following tasks#
 
-
+df = pd.DataFrame(exam_data, index=labels)
 
 
 
@@ -35,7 +35,7 @@ i      Kevin    8.0
 j      Jonas   19.0 
 """
 
-
+print(df[['name', 'score']])
 
 
 
@@ -51,7 +51,7 @@ f   20.0     yes
 g   14.5     yes
 
 """
-
+print(df.loc[['b', 'd', 'f', 'g'], ['score', 'qualify']])
 
 
 
@@ -68,7 +68,7 @@ f  Michael   20.0         3     yes
 
 """
 
-
+print(df[df['attempts'] > 2])
 
 
 
@@ -83,7 +83,7 @@ f         3    Michael       yes        20.0
 j         1      Jonas       yes        19.0   
 
 """
-
+print(df[(df['score'] >= 15) & (df['score'] <= 20)])
 
 
 
@@ -106,7 +106,7 @@ Expected Output:
 5         3    Michael     yes   20.0 
 
 """
-
+print(df.sort_values(by=['attempts', 'name']))
 
 
 
